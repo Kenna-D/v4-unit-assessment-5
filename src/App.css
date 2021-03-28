@@ -84,3 +84,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+@media (max-width: 990px) {
+  
+}
+
+@media (max-width: 760px) {
+
+}
