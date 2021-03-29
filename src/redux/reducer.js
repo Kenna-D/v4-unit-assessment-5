@@ -7,6 +7,7 @@ const UPDATE_USER = 'UPDATE_USER';
 const USER_LOGOUT = 'USER_LOGOUT'
 
 export function updateUser(username, profile_pic){
+  console.log(username, profile_pic)
   return {
     type: UPDATE_USER,
     payload: {username, profile_pic}
@@ -22,6 +23,7 @@ export function logout(){
 export default function reducer(state= initialState, action) {
   switch(action.type){
     case UPDATE_USER:
+      console.log(action.payload)
       return {...state, ...action.payload};
     case USER_LOGOUT:
       return initialState;

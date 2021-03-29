@@ -29,14 +29,14 @@ class Nav extends Component {
     axios.post('/api/auth/logout')
       .then(logout())
   }
-  
   render() {
+    const profile_pic = this.props.match.params.profile_pic
     console.log(this.props)
       return this.props.location.pathname !== '/' &&
         <div className='nav'>
           <div className='nav-profile-container'>
             <div className='nav-profile-pic' 
-            style={{backgroundImage: `${this.props.profile_pic}`}}
+            style={{backgroundImage: profile_pic}}
             ></div>
             <p>{this.props.match.params.username}</p>
           </div>
@@ -56,7 +56,11 @@ class Nav extends Component {
 };
 
 const mapStateToProps = (state) => {
-  return state
+  // const {username, profile_pic} = state
+  return {
+    // username, profile_pic
+    state
+  }
 }
 
 export default withRouter(connect(mapStateToProps, {updateUser, logout})(Nav));

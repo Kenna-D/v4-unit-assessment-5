@@ -25,9 +25,12 @@ class Auth extends Component {
 
   login() {
     axios.post('/api/auth/login', this.state)
-      .then(res => {
-        this.props.history.push('/dash')
-        // updateUser({username, profile_pic})
+    .then(res => {
+      this.props.history.push('/dash')
+      const {username} = this.state
+      const profile_pic = `https://robohash.org/${username}.png`
+      updateUser({username, profile_pic})
+      console.log(this.state)
       })
       .catch(err => {
         console.log(err)
