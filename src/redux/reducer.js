@@ -6,11 +6,11 @@ const initialState = {
 const UPDATE_USER = 'UPDATE_USER';
 const USER_LOGOUT = 'USER_LOGOUT'
 
-export function updateUser(username, profile_pic){
-  console.log(username, profile_pic)
+export function updateUser(user){
+  console.log(user)
   return {
     type: UPDATE_USER,
-    payload: {username, profile_pic}
+    payload: user
   }
 };
 
@@ -24,9 +24,13 @@ export default function reducer(state= initialState, action) {
   switch(action.type){
     case UPDATE_USER:
       console.log(action.payload)
-      return {...state, ...action.payload};
+      return {
+        ...state, 
+        username: action.payload.username,
+        profile_pic: action.payload.profile_pic
+      };
     case USER_LOGOUT:
       return initialState;
-      default: return state;
+    default: return state;
   }
 };

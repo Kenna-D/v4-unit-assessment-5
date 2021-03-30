@@ -29,7 +29,8 @@ class Auth extends Component {
       this.props.history.push('/dash')
       const {username} = this.state
       const profile_pic = `https://robohash.org/${username}.png`
-      updateUser({username, profile_pic})
+      console.log(username, profile_pic)
+      this.props.updateUser({username, profile_pic})
       console.log(this.state)
       })
       .catch(err => {
@@ -83,4 +84,4 @@ class Auth extends Component {
   }
 }
 
-export default connect(null, updateUser)(Auth);
+export default connect(null, {updateUser})(Auth);
